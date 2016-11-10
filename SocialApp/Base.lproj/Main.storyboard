@@ -26,7 +26,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="beM-Xt-Lct">
-                                        <rect key="frame" x="112" y="28" width="150" height="94"/>
+                                        <rect key="frame" x="142" y="30" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="657-PR-DUp"/>
+                                            <constraint firstAttribute="height" constant="90" id="hBE-dy-p1m"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.73725490196078436" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,6 +76,9 @@
                                     <constraint firstAttribute="height" constant="150" id="hSE-E7-uya"/>
                                 </constraints>
                                 <state key="normal" image="f"/>
+                                <connections>
+                                    <action selector="facebookButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sic-Dp-93R"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mpn-pY-gAY">
                                 <rect key="frame" x="46" y="390" width="283" height="107"/>
@@ -126,6 +133,6 @@
     </scenes>
     <resources>
         <image name="f" width="352" height="328"/>
-        <image name="logo" width="150" height="94"/>
+        <image name="logo" width="170" height="170"/>
     </resources>
 </document>
