@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
     
@@ -19,7 +20,15 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: SEGUE_ID_GO_TO_FEED, sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +60,9 @@ class SignInVC: UIViewController {
                 print("ROY: Unable to authenticate with Firebase - \(error)")
             } else {
                 print("ROY: Successfully authenticated with Firebase")
+                if let user = user {
+                    self.completSigIn(id: user.uid)
+                }
             }
         })
     }
@@ -63,6 +75,9 @@ class SignInVC: UIViewController {
                 
                 if error == nil {
                     print("ROY: Email User authenticated with Firebase")
+                    if let user = user {
+                        self.completSigIn(id: user.uid)
+                    }
                 } else {
                     print("ROY: Email User authentication failed - \(error)")
                     FIRAuth.auth()?.createUser(withEmail: email, password: password){ (user, error) in
@@ -71,6 +86,9 @@ class SignInVC: UIViewController {
                             print("ROY: Unable to create user with firebase - \(error)")
                         } else {
                             print("ROY: Successfully created user with firebase")
+                            if let user = user {
+                                self.completSigIn(id: user.uid)
+                            }
                         }
                     }
                 }
@@ -79,7 +97,11 @@ class SignInVC: UIViewController {
         }
     }
     
-    
+    func completSigIn(id: String) {
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("ROY: Data saved to keychain - \(keychainResult)")
+        performSegue(withIdentifier: SEGUE_ID_GO_TO_FEED, sender: nil)
+    }
 
 }
 
