@@ -10,6 +10,7 @@
 		0D43F4163838EBFBEF3BF4BE /* Pods_SocialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4802996BB7363526A1525B3 /* Pods_SocialApp.framework */; };
 		6C091F261DD4191800DBFC49 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C091F251DD4191800DBFC49 /* FeedVC.swift */; };
 		6C091F281DD5561A00DBFC49 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C091F271DD5561A00DBFC49 /* RoundImageView.swift */; };
+		6C091F2A1DD6654C00DBFC49 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C091F291DD6654C00DBFC49 /* PostCell.swift */; };
 		6C10B8DA1DD2EF15003C5CE9 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10B8D91DD2EF15003C5CE9 /* CustomView.swift */; };
 		6C10B8DD1DD3145B003C5CE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10B8DC1DD3145B003C5CE9 /* Constants.swift */; };
 		6C10B8DF1DD322DC003C5CE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10B8DE1DD322DC003C5CE9 /* RoundButton.swift */; };
@@ -28,6 +29,7 @@
 		6C091F241DD3FA0200DBFC49 /* SocialApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialApp.entitlements; sourceTree = "<group>"; };
 		6C091F251DD4191800DBFC49 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		6C091F271DD5561A00DBFC49 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		6C091F291DD6654C00DBFC49 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		6C10B8D91DD2EF15003C5CE9 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		6C10B8DC1DD3145B003C5CE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6C10B8DE1DD322DC003C5CE9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				6C10B8E01DD324EC003C5CE9 /* CustomTextField.swift */,
 				6C10B8E21DD326A6003C5CE9 /* SignInCustomButton.swift */,
 				6C091F271DD5561A00DBFC49 /* RoundImageView.swift */,
+				6C091F291DD6654C00DBFC49 /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				6C9446C31DD2A36E00581A9A /* AppDelegate.swift in Sources */,
 				6C10B8DD1DD3145B003C5CE9 /* Constants.swift in Sources */,
 				6C091F281DD5561A00DBFC49 /* RoundImageView.swift in Sources */,
+				6C091F2A1DD6654C00DBFC49 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

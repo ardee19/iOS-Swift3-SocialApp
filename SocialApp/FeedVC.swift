@@ -12,10 +12,12 @@ import Firebase
 
 class FeedVC: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     @IBAction func SignOutTapped(_ sender: UIButton) {
@@ -23,5 +25,19 @@ class FeedVC: UIViewController {
         print("ROY: Keychain Wrapper removed")
         try! FIRAuth.auth()?.signOut()
         
+    }
+}
+
+extension FeedVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        return (tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell)!
     }
 }
