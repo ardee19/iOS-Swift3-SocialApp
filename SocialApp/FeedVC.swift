@@ -24,6 +24,7 @@ class FeedVC: UIViewController {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("ROY: Keychain Wrapper removed")
         try! FIRAuth.auth()?.signOut()
+        self.dismiss(animated: true, completion: nil)
         
     }
 }
