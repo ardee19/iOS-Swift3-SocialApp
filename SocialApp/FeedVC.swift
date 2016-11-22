@@ -13,14 +13,21 @@ import Firebase
 class FeedVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageAdd: UIImageView!
     
     var posts = [Post]()
+    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: {
             (snapshot) in
@@ -40,6 +47,10 @@ class FeedVC: UIViewController {
         })
     }
 
+    @IBAction func addImageTapped(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func SignOutTapped(_ sender: UIButton) {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("ROY: Keychain Wrapper removed")
@@ -67,5 +78,19 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
             return PostCell()
         }
         
+    }
+}
+
+extension FeedVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageAdd.image = image
+        } else {
+            print("RD: A valid image wasn't selected")
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
