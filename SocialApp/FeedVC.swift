@@ -59,8 +59,13 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post = posts[indexPath.row]
-        print("RD: \(post.caption)")
         
-        return (tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell)!
+        if let cell = tableView.dequeueReusableCell(withIdentifier: POST_CELL_ID) as? PostCell {
+            cell.configureCell(post: post)
+            return cell
+        } else {
+            return PostCell()
+        }
+        
     }
 }
