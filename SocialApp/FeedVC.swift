@@ -14,6 +14,8 @@ class FeedVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: UIImageView!
+    @IBOutlet weak var captionField: CustomTextField!
+    var imageSelected = false
     
     var posts = [Post]()
     
@@ -59,6 +61,39 @@ class FeedVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
         
     }
+    
+    @IBAction func postButtonTapped(_ sender: UIButton) {
+        
+        guard let caption = captionField.text, caption != "" else {
+            print("RD: GUARD_ERROR - Caption must have text")
+            return
+        }
+        
+        guard let image = imageAdd.image, imageSelected == true else {
+            print("RD: GUARD_ERROR - Image must be present")
+            return
+        }
+        
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
+            
+            let imageUID = NSUUID().uuidString
+            let metaData = FIRStorageMetadata()
+            metaData.contentType = "image/jpeg"
+            
+            // Uploading Images
+            DataService.ds.REF_POST_IMAGES.child(imageUID).put(imageData, metadata: metaData) { (metadata, error) in
+                
+                if error != nil {
+                    print("RD: Unable to upload image to Firebase storage - \(error)")
+                } else {
+                    print("RD: Successfully uploaded images to Firebase")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    
+                }
+            }
+        }
+    }
+    
 }
 
 extension FeedVC: UITableViewDelegate, UITableViewDataSource {
@@ -97,6 +132,7 @@ extension FeedVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
         } else {
             print("RD: A valid image wasn't selected")
         }
